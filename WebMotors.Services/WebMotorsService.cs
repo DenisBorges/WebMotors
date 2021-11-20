@@ -27,7 +27,7 @@ namespace WebMotors.Services
         {
             List<MakeDto> resultado = null;
 
-            using (HttpResponseMessage resposta = await _client.GetAsync("/Make"))
+            using (HttpResponseMessage resposta = await _client.GetAsync("Make"))
             using (HttpContent conteudo = resposta.Content)
             {
                 string response = await conteudo.ReadAsStringAsync();
@@ -42,7 +42,7 @@ namespace WebMotors.Services
         {
             List<ModelDto> resultado = null;
 
-            using (HttpResponseMessage resposta = await _client.GetAsync($"/Model?MakeID={makeId}"))
+            using (HttpResponseMessage resposta = await _client.GetAsync($"Model?MakeID={makeId}"))
             using (HttpContent conteudo = resposta.Content)
             {
                 string response = await conteudo.ReadAsStringAsync();
@@ -57,7 +57,7 @@ namespace WebMotors.Services
         {
             List<VehiclesDto> resultado = null;
 
-            using (HttpResponseMessage resposta = await _client.GetAsync($"/Vehicles?Page={page}"))
+            using (HttpResponseMessage resposta = await _client.GetAsync($"Vehicles?Page={page}"))
             using (HttpContent conteudo = resposta.Content)
             {
                 string response = await conteudo.ReadAsStringAsync();
@@ -72,7 +72,7 @@ namespace WebMotors.Services
         {
             List<VersionDto> resultado = null;
 
-            using (HttpResponseMessage resposta = await _client.GetAsync($"/Version?ModelID={modelId}"))
+            using (HttpResponseMessage resposta = await _client.GetAsync($"Version?ModelID={modelId}"))
             using (HttpContent conteudo = resposta.Content)
             {
                 string response = await conteudo.ReadAsStringAsync();
