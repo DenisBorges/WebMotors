@@ -40,5 +40,10 @@ namespace WebMotors.AppService
         {
             return  _map.Map<List<AnuncioWebMotorsViewModel>>(await _repository.GetAll());
         }
+
+        public async Task<List<AnuncioWebMotorsViewModel>> GetAnunciosByFilter(AnuncioWebMotorsViewModel filter)
+        {
+            return _map.Map<List<AnuncioWebMotorsViewModel>>(await _repository.ListByFilter(_map.Map<AnuncioWebMotors>(filter)));
+        }
     }
 }

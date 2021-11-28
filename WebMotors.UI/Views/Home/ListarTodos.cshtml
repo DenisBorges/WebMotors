@@ -1,0 +1,43 @@
+﻿@using WebMotors.UI.Models
+@model List<AnuncioWebMotors>
+
+@{
+    ViewData["Title"] = "ListarTodos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .card-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+        .card-container .card {
+            margin: 10px 10px 0 0;
+        }
+</style>
+
+<div class="card-container">
+    @foreach (var item in Model)
+    {
+        <div id="@item.ID" class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">@string.Format("{0} {1}", item.Marca, item.Modelo)</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@item.Versao.ToString()</h6>
+                <p class="card-text">Ano: @item.Ano.ToString()</p>
+                <p class="card-text">Km: @item.Quilometragem.ToString()</p>
+                <p class="card-text">Observação: @item.Observacao.ToString()</p>
+            </div>
+            <div class="card-footer">
+                <button class="btnEditar btn btn-success">Editar</button>
+                <button class="btnExcluir btn btn-danger">Excluir</button>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts{ 
+    <script src="~/js/Home/ListarTodos.js"></script>
+}
+

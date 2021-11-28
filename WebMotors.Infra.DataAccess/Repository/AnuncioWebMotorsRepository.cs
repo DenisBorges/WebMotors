@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using WebMotors.Domain;
 using WebMotors.Domain.Repository;
+using AspNetCore.IQueryable.Extensions;
+using AspNetCore.IQueryable.Extensions.Filter;
 
 namespace WebMotors.Infra.DataAccess
 {
@@ -48,6 +50,12 @@ namespace WebMotors.Infra.DataAccess
         {
             _repository.Add(objeto);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<AnuncioWebMotors>> ListByFilter(AnuncioWebMotors filter)
+        {
+            return await _repository.AsQueryable().Filter(filter).AsNoTracking().ToListAsync();
+            //return null;
         }
     }
 }

@@ -9,8 +9,8 @@ using WebMotors.Infra.DataAccess;
 namespace WebMotors.Infra.DataAccess.Migrations
 {
     [DbContext(typeof(Conexao))]
-    [Migration("20211119171632_teste")]
-    partial class teste
+    [Migration("20211127215508_Second Migration")]
+    partial class SecondMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

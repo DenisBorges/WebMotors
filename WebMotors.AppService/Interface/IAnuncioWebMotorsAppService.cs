@@ -15,5 +15,7 @@ namespace WebMotors.AppService.Interface
         Task ApagarAnuncio(int id);
 
         Task AtualizarAnuncio(AnuncioWebMotorsViewModel anuncio);
+
+        Task<List<AnuncioWebMotorsViewModel>> GetAnunciosByFilter(AnuncioWebMotorsViewModel filter);
     }
 }

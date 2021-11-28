@@ -2,7 +2,7 @@
 
 namespace WebMotors.Infra.DataAccess.Migrations
 {
-    public partial class teste : Migration
+    public partial class SecondMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

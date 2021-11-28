@@ -19,7 +19,8 @@ namespace WebMotors.Api.Controllers
         private readonly ILogger<AnuncioWebMotorsController> _log;
         public AnuncioWebMotorsController(IAnuncioWebMotorsAppService appService,
             IWebMotorsAppService service,
-        ILogger<AnuncioWebMotorsController> log)
+        ILogger<AnuncioWebMotorsController> log 
+           )
         {
             _appService = appService;
             _log = log;
@@ -69,6 +70,23 @@ namespace WebMotors.Api.Controllers
             try
             {
                 var lista = await _appService.GetAllAnuncios();
+
+                return Ok(lista);
+            }
+            catch (Exception ex)
+            {
+                _log.LogError(ex, ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro durante a tentativa. Por favor tente novamente");
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ListarPorFiltro([FromQuery] AnuncioWebMotorsViewModel filtro)
+        {
+
+            try
+            {
+                var lista = await _appService.GetAnunciosByFilter(filtro);
 
                 return Ok(lista);
             }

@@ -1,0 +1,73 @@
+﻿@using WebMotors.UI.Models
+@model AnuncioWebMotors
+@{
+    ViewData["Title"] = "Cadastrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var id = 0;
+
+    if (Model != null)
+        id = Model.ID;
+}
+
+
+
+<h1>Cadastrar</h1>
+
+<div id="anuncio" data-id="@id" class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(x => x.Marca)
+        @Html.DropDownListFor(x => x.Marca, (IEnumerable<SelectListItem>)ViewBag.Marcas, "", new { @class = "form-control" })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(x => x.Modelo)
+        @Html.DropDownListFor(x => x.Modelo, Enumerable.Empty<SelectListItem>(), "", new { @class = "form-control", disabled = "disabled" })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(x => x.Versao)
+        @Html.DropDownListFor(x => x.Versao, Enumerable.Empty<SelectListItem>(), "", new { @class = "form-control", disabled = "disabled" })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(x => x.Ano)
+        @Html.TextBoxFor(x => x.Ano, new { @class = "form-control" })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(x => x.Quilometragem)
+        @Html.TextBoxFor(x => x.Quilometragem, new { @class = "form-control" })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(x => x.Observacao)
+        @Html.TextAreaFor(x => x.Observacao, new { @class = "form-control" })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @if (Model is null)
+        {
+            <button id="btnSalvar" type="button" class="btn btn-success">Salvar</button>
+        }
+        else
+        {
+            <button id="btnAtualizar" type="button" class="btn btn-success">Atualizar</button>
+        }
+
+    </div>
+</div>
+
+
+@section Scripts{
+
+    <script src="~/js/Home/Cadastrar.js"></script>
+
+}
+
